@@ -3,13 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { TextField } from '@mui/material';
+import { Text } from '@aws-amplify/ui-react'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App>
-      <TextField id="standard-basic" label="Standard" variant="standard" />
+    <Text
+    variation="primary"
+    as="p"
+    lineHeight="1.5em"
+    fontWeight={400}
+    fontSize="1em"
+    fontStyle="normal"
+    textDecoration="none"
+    width="30vw"
+  >
+    </Text>
     </App>
   </React.StrictMode>
 );
