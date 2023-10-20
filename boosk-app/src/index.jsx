@@ -17,7 +17,7 @@ root.render(
     fontSize="1em"
     fontStyle="normal"
     textDecoration="none"
-    width="30vw"
+    width="40vw"
   >
     </Text>
     </App>
