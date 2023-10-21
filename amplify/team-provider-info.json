@@ -17,6 +17,9 @@
       },
       "api": {
         "booskapp": {}
+      },
+      "storage": {
+        "imageStore": {}
       }
     }
   }

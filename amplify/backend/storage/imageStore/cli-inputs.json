@@ -1,0 +1,14 @@
+{
+  "resourceName": "imageStore",
+  "policyUUID": "04427405",
+  "bucketName": "boosk-app-storage",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
