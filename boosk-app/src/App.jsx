@@ -29,6 +29,7 @@ function App() {
           textDecoration="none"
           width="30vw"
         >
+          Hello from AWS Amplify
       </Text>
     </div>
   );
