@@ -95,7 +95,10 @@ const App = ({ signOut }) => {
 
   return (
     <View className="App">
-      <Heading level={1}>My Notes App</Heading>
+      <Flex justifyContent="space-between" alignItems="center">
+        <Heading level={1} style={{ marginLeft: 'auto', marginRight: 'auto' }}>My Notes App</Heading>
+        <Button onClick={signOut} style={{ marginLeft: 'auto' }}>Sign Out</Button>
+      </Flex>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
           <TextField
@@ -151,7 +154,6 @@ const App = ({ signOut }) => {
           type="file"
           style={{ alignSelf: "end" }}
         />
-      <Button onClick={signOut}>Sign Out</Button>
     </View>
   );
 };
