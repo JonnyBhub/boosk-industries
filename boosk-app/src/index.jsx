@@ -3,23 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Text } from '@aws-amplify/ui-react'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App>
-    <Text
-    variation="primary"
-    as="p"
-    lineHeight="1.5em"
-    fontWeight={400}
-    fontSize="1em"
-    fontStyle="normal"
-    textDecoration="none"
-    width="40vw"
-  >
-    </Text>
     </App>
   </React.StrictMode>
 );
