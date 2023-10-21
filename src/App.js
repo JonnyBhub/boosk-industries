@@ -39,7 +39,7 @@ const App = ({ signOut }) => {
   
     await Promise.all(
       notesFromAPI.map(async (note) => {
-        if (note && note.name) { // Check if 'note' is not null and has the 'name' property
+        if (note?.name) { // Check if 'note' is not null and has the 'name' property
           if (note.image) {
             const url = await Storage.get(note.name);
             note.image = url;
@@ -77,7 +77,7 @@ const App = ({ signOut }) => {
       data.image = image.name;
     }
   
-    if (!!data.image) {
+    if (data.image) {
       await Storage.put(data.name, image);
     }
   
