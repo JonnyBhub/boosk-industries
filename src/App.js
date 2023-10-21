@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
-import { API, Storage } from 'aws-amplify';
-import {
+import { API, Storage, Auth } from 'aws-amplify';
+import { 
   Button,
   Flex,
   Heading,
@@ -24,6 +24,14 @@ const App = ({ signOut }) => {
   useEffect(() => {
     fetchNotes();
   }, []);
+
+  const [user, setUser] = useState(null);
+
+        useEffect(() => {
+          Auth.currentAuthenticatedUser()
+            .then(user => setUser(user))
+            .catch(err => console.log(err));
+        }, []);
 
   async function fetchNotes() {
     const apiData = await API.graphql({ query: listNotes });
@@ -96,10 +104,13 @@ const App = ({ signOut }) => {
   return (
     <View className="App">
       <Flex justifyContent="space-between" alignItems="center">
-        <Button onClick={() => window.location.reload()} style={{ marginLeft: '2rem', width: '15%' }}>Home</Button>
-        <Heading level={1} style={{ marginLeft:'auto', marginRight: 'auto', width: '70%' }}>My Notes App</Heading>
-        <Button onClick={signOut} style={{ marginLeft: 'auto', width: '15%'}} marginRight="2rem">Sign Out</Button>
+        <Button onClick={() => window.location.reload()} style={{ marginLeft: '1rem', width: '10%' }}>Home</Button>
+        <Text style={{  marginRight: 'auto', width: '10%' }}>Welcome to this App</Text>
+        <Heading level={1} style={{ margin: '0 auto', width: '60%' }}>My Notes App</Heading>
+        <Text style={{  marginRight: 'auto', width: '10%' }}>Signed in as: {user && user.username}</Text>
+        <Button onClick={signOut} style={{ width: '10%', marginRight:"1rem" }}>Sign Out</Button>
       </Flex>
+
       <div style={{borderBottom: '1px solid black', marginTop:"1rem"}} />
       <br />
       <Heading level={3}>Create a new note</Heading>
