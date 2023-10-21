@@ -107,7 +107,7 @@ const App = ({ signOut }) => {
         <Button onClick={() => window.location.reload()} style={{ marginLeft: '1rem', width: '10%' }}>Home</Button>
         <Text style={{  marginRight: 'auto', width: '10%' }}>Welcome to this App</Text>
         <Heading level={1} style={{ margin: '0 auto', width: '60%' }}>My Notes App</Heading>
-        <Text style={{  marginRight: 'auto', width: '10%' }}>Signed in as: {user && user.username}</Text>
+        <Text style={{  marginRight: 'auto', width: '10%' }}>Signed in as: {user?.username}</Text>
         <Button onClick={signOut} style={{ width: '10%', marginRight:"1rem" }}>Sign Out</Button>
       </Flex>
 
