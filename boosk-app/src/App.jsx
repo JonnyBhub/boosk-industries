@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { Text } from '@aws-amplify/ui-react';
 
 function App() {
   return (
@@ -18,6 +19,17 @@ function App() {
           Learn React
         </a>
       </header>
+      <Text
+          variation="primary"
+          as="p"
+          lineHeight="1.5em"
+          fontWeight={400}
+          fontSize="1em"
+          fontStyle="normal"
+          textDecoration="none"
+          width="30vw"
+        >
+      </Text>
     </div>
   );
 }
