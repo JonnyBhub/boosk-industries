@@ -9,7 +9,7 @@
       "UnauthRoleName": "amplify-amplify0c6f0efe0ac14-staging-140739-unauthRole",
       "StackName": "amplify-amplify0c6f0efe0ac14-staging-140739",
       "StackId": "arn:aws:cloudformation:eu-west-2:789444391137:stack/amplify-amplify0c6f0efe0ac14-staging-140739/320a0750-701b-11ee-8b1c-0a4e05dcb758",
-      "AmplifyAppId": "dgmw3cfd5vjmz"
+      "AmplifyAppId": "dgy6sy0ze0ph"
     },
     "categories": {
       "auth": {
