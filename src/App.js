@@ -96,9 +96,13 @@ const App = ({ signOut }) => {
   return (
     <View className="App">
       <Flex justifyContent="space-between" alignItems="center">
-        <Heading level={1} style={{ marginLeft: 'auto', marginRight: 'auto' }}>My Notes App</Heading>
-        <Button onClick={signOut} style={{ marginLeft: 'auto' }}>Sign Out</Button>
+        <Button onClick={() => window.location.reload()} style={{ marginLeft: '2rem', width: '15%' }}>Home</Button>
+        <Heading level={1} style={{ marginLeft:'auto', marginRight: 'auto', width: '70%' }}>My Notes App</Heading>
+        <Button onClick={signOut} style={{ marginLeft: 'auto', width: '15%'}} marginRight="2rem">Sign Out</Button>
       </Flex>
+      <div style={{borderBottom: '1px solid black', marginTop:"1rem"}} />
+      <br />
+      <Heading level={3}>Create a new note</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
           <TextField
@@ -122,7 +126,7 @@ const App = ({ signOut }) => {
           </Button>
         </Flex>
       </View>
-      <Heading level={2}>Current Notes</Heading>
+      <Heading level={3}>Current Notes</Heading>
       <View margin="3rem 0">
         {notes.map((note) => (
           <Flex
