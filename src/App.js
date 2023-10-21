@@ -28,32 +28,56 @@ const App = ({ signOut }) => {
   async function fetchNotes() {
     const apiData = await API.graphql({ query: listNotes });
     const notesFromAPI = apiData.data.listNotes.items;
+  
     await Promise.all(
       notesFromAPI.map(async (note) => {
-        if (note.image) {
-          const url = await Storage.get(note.name);
-          note.image = url;
+        if (note && note.name) { // Check if 'note' is not null and has the 'name' property
+          if (note.image) {
+            const url = await Storage.get(note.name);
+            note.image = url;
+          }
         }
         return note;
       })
     );
+  
     setNotes(notesFromAPI);
   }
+  
 
   async function createNote(event) {
     event.preventDefault();
     const form = new FormData(event.target);
+    const name = form.get("name");
+    const description = form.get("description");
     const image = form.get("image");
+  
+    // Check if 'name' and 'description' are not empty
+    if (!name || !description) {
+      // Handle the case where 'name' or 'description' is missing
+      console.error("Name and description are required.");
+      return;
+    }
+  
     const data = {
-      name: form.get("name"),
-      description: form.get("description"),
-      image: image.name,
+      name,
+      description,
     };
-    if (!!data.image) await Storage.put(data.name, image);
+  
+    if (image) {
+      // Check if 'image' is not null and has a 'name'
+      data.image = image.name;
+    }
+  
+    if (!!data.image) {
+      await Storage.put(data.name, image);
+    }
+  
     await API.graphql({
       query: createNoteMutation,
       variables: { input: data },
     });
+  
     fetchNotes();
     event.target.reset();
   }
