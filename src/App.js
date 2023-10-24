@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
 import { API, Storage, Auth } from 'aws-amplify';
+import ToggleDarkMode from "./components/toggleDarkMode";
 import { 
   Button,
   Flex,
@@ -169,7 +170,11 @@ const App = ({ signOut }) => {
           type="file"
           style={{ alignSelf: "end" }}
         />
+      <View style={{ position: 'fixed', bottom: 0, right: 0 }}>
+        <ToggleDarkMode />
+      </View>
     </View>
+   
   );
 };
 
