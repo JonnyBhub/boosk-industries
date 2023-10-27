@@ -112,7 +112,7 @@ const App = ({ signOut }) => {
         <Button onClick={signOut} style={{ width: '10%', marginRight:"1rem" }}>Sign Out</Button>
       </Flex>
 
-      <div style={{borderBottom: '1px solid black', marginTop:"1rem"}} />
+      <div class="underline" style={{marginTop:"1rem"}} />
       <br />
       <Heading level={3}>Create a new note</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
@@ -139,7 +139,7 @@ const App = ({ signOut }) => {
         </Flex>
       </View>
       <Heading level={3}>Current Notes</Heading>
-      <View margin="3rem 0">
+      <View margin="3rem 1rem">
         {notes.map((note) => (
           <Flex
             key={note.id || note.name}
@@ -170,7 +170,7 @@ const App = ({ signOut }) => {
           type="file"
           style={{ alignSelf: "end" }}
         />
-      <View style={{ position: 'fixed', bottom: 0, right: 0 }}>
+      <View className="App" style={{ position: 'fixed', bottom: 0, right: 0 , margin:'1rem 1rem 1rem 1rem'}}>
         <ToggleDarkMode />
       </View>
     </View>
