@@ -1,0 +1,16 @@
+.menu.dark-mode {
+  backdrop-filter: invert(80%);
+  background-color: white;
+  color: white;
+  --amplify-components-text-color-primary: white;
+  --amplify-components-heading-color: white;
+  --amplify-components-button-color: white;
+  --amplify-components-button-text-color: white
+    --amplify-components-menu-background-color: white;
+  --amplify-components-menu-active-background-color: white;
+}
+
+.menu {
+  --amplify-components-menu-item-width: 100%;
+  margin-left: 2rem;
+}

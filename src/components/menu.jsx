@@ -1,22 +1,48 @@
-import {  Menu, MenuItem, View, IconsProvider, ThemeProvider, Theme} from '@aws-amplify/ui-react';
+import React from 'react';
+import { Menu, MenuItem, View, IconsProvider } from '@aws-amplify/ui-react';
 import { Icon } from '@iconify/react';
+import { Link } from 'react-router-dom';
+import '../css/menu.css';
 
-
-export const MyMenu = () => (
+export const MyMenu = () => {
+  return (
     <IconsProvider
-        icons={{
+      icons={{
         menu: {
-            menu: <Icon icon="streamline:interface-setting-menu-parallel-hamburger-square-navigation-parallel-hamburger-buttonmenu-square" />,
+          menu: (
+            <Icon icon='streamline:interface-setting-menu-parallel-hamburger-square-navigation-parallel-hamburger-buttonmenu-square' />
+          ),
         },
-    }}
+      }}
     >
-        <View width="4rem">
-            <Menu>
-                <MenuItem>Home</MenuItem>
-                <MenuItem>About</MenuItem>
-                <MenuItem>Notes</MenuItem>
-                <MenuItem>Theory</MenuItem>
-            </Menu>
-        </View>
+      <View classname='menu' width='4rem' marginLeft={'2rem'}>
+        <Menu>
+          <Link to='/'>
+            <MenuItem>
+              <Icon icon='iconamoon:home-light' />
+              &ensp;Home
+            </MenuItem>
+          </Link>
+          <Link to='/App'>
+            <MenuItem>
+              <Icon icon='ri:book-line' />
+              &ensp;About
+            </MenuItem>
+          </Link>
+          <Link to='/Notes'>
+            <MenuItem>
+              <Icon icon='material-symbols:note-outline' />
+              &ensp;Notes
+            </MenuItem>
+          </Link>
+          <Link to='/Theory'>
+            <MenuItem>
+              <Icon icon='mdi:brain' />
+              &ensp;Theory
+            </MenuItem>
+          </Link>
+        </Menu>
+      </View>
     </IconsProvider>
-);
+  );
+};

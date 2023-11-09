@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import "../App.css";
-import "@aws-amplify/ui-react/styles.css";
+import React, { useState, useEffect } from 'react';
+import '../App.css';
+import '@aws-amplify/ui-react/styles.css';
 import { API, Storage } from 'aws-amplify';
-import { 
+import {
   Button,
   Flex,
   Heading,
@@ -12,11 +12,11 @@ import {
   View,
   withAuthenticator,
 } from '@aws-amplify/ui-react';
-import { listNotes } from "../graphql/queries";
+import { listNotes } from '../graphql/queries';
 import {
   createNote as createNoteMutation,
   deleteNote as deleteNoteMutation,
-} from "../graphql/mutations";
+} from '../graphql/mutations';
 
 export const Notes = () => {
   const [notes, setNotes] = useState([]);
@@ -28,10 +28,11 @@ export const Notes = () => {
   async function fetchNotes() {
     const apiData = await API.graphql({ query: listNotes });
     const notesFromAPI = apiData.data.listNotes.items;
-  
+
     await Promise.all(
-      notesFromAPI.map(async (note) => {
-        if (note?.name) { // Check if 'note' is not null and has the 'name' property
+      notesFromAPI.map(async note => {
+        if (note?.name) {
+          // Check if 'note' is not null and has the 'name' property
           if (note.image) {
             const url = await Storage.get(note.name);
             note.image = url;
@@ -40,51 +41,49 @@ export const Notes = () => {
         return note;
       })
     );
-  
+
     setNotes(notesFromAPI);
   }
-  
 
   async function createNote(event) {
     event.preventDefault();
     const form = new FormData(event.target);
-    const name = form.get("name");
-    const description = form.get("description");
-    const image = form.get("image");
-  
+    const name = form.get('name');
+    const description = form.get('description');
+    const image = form.get('image');
+
     // Check if 'name' and 'description' are not empty
     if (!name || !description) {
       // Handle the case where 'name' or 'description' is missing
-      console.error("Name and description are required.");
+      console.error('Name and description are required.');
       return;
     }
-  
+
     const data = {
       name,
       description,
     };
-  
+
     if (image) {
       // Check if 'image' is not null and has a 'name'
       data.image = image.name;
     }
-  
+
     if (data.image) {
       await Storage.put(data.name, image);
     }
-  
+
     await API.graphql({
       query: createNoteMutation,
       variables: { input: data },
     });
-  
+
     fetchNotes();
     event.target.reset();
   }
-  
 
   async function deleteNote({ id, name }) {
-    const newNotes = notes.filter((note) => note.id !== id);
+    const newNotes = notes.filter(note => note.id !== id);
     setNotes(newNotes);
     await Storage.remove(name);
     await API.graphql({
@@ -94,44 +93,44 @@ export const Notes = () => {
   }
 
   return (
-    <View className="App">
+    <View className='App'>
       <Heading level={3}>Create a new note</Heading>
-      <View as="form" margin="3rem 0" onSubmit={createNote}>
-        <Flex direction="row" justifyContent="center">
+      <View as='form' margin='3rem 0' onSubmit={createNote}>
+        <Flex direction='row' justifyContent='center'>
           <TextField
-            name="name"
-            placeholder="Note Name"
-            label="Note Name"
+            name='name'
+            placeholder='Note Name'
+            label='Note Name'
             labelHidden
-            variation="quiet"
+            variation='quiet'
             required
           />
           <TextField
-            name="description"
-            placeholder="Note Description"
-            label="Note Description"
+            name='description'
+            placeholder='Note Description'
+            label='Note Description'
             labelHidden
-            variation="quiet"
+            variation='quiet'
             required
           />
-          <Button type="submit" variation="primary">
+          <Button type='submit' variation='primary'>
             Create Note
           </Button>
         </Flex>
       </View>
       <Heading level={3}>Current Notes</Heading>
-      <View margin="3rem 1rem">
-        {notes.map((note) => (
+      <View margin='3rem 1rem'>
+        {notes.map(note => (
           <Flex
             key={note.id || note.name}
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
+            direction='row'
+            justifyContent='center'
+            alignItems='center'
           >
-            <Text as="strong" fontWeight={700}>
+            <Text as='strong' fontWeight={700}>
               {note.name}
             </Text>
-            <Text as="span">{note.description}</Text>
+            <Text as='span'>{note.description}</Text>
             {note.image && (
               <Image
                 src={note.image}
@@ -139,18 +138,13 @@ export const Notes = () => {
                 style={{ width: 400 }}
               />
             )}
-            <Button variation="link" onClick={() => deleteNote(note)}>
+            <Button variation='link' onClick={() => deleteNote(note)}>
               Delete note
             </Button>
           </Flex>
         ))}
       </View>
-      <View
-          name="image"
-          as="input"
-          type="file"
-          style={{ alignSelf: "end" }}
-        />
+      <View name='image' as='input' type='file' style={{ alignSelf: 'end' }} />
     </View>
   );
 };

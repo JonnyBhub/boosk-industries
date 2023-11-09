@@ -1,21 +1,18 @@
-import { View ,Heading} from '@aws-amplify/ui-react';
+import { View, Heading } from '@aws-amplify/ui-react';
 import React from 'react';
+import '../css/home.css';
 
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function Home() {
-    const history = useHistory();
-
-    const handleLogin = () => {
-        history.push('/loggedIn');
-    };
-
-    return (
-        <View className="home">
-            <Heading level={1}>Welcome to our website!</Heading>
-            <button className="login-button" onClick={handleLogin}>Login</button>
-        </View>
-    );
-}
+const Home = () => {
+  return (
+    <View className='home'>
+      <Heading level={1}>Welcome to our website!</Heading>
+      <Link to='/App'>
+        <button className='login-button'>Login</button>
+      </Link>
+    </View>
+  );
+};
 
 export default Home;

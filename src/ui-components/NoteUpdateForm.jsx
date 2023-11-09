@@ -5,13 +5,13 @@
  **************************************************************************/
 
 /* eslint-disable */
-import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { fetchByPath, validateField } from "./utils";
-import { API } from "aws-amplify";
-import { getNote } from "../graphql/queries";
-import { updateNote } from "../graphql/mutations";
+import * as React from 'react';
+import { Button, Flex, Grid, TextField } from '@aws-amplify/ui-react';
+import { getOverrideProps } from '@aws-amplify/ui-react/internal';
+import { fetchByPath, validateField } from './utils';
+import { API } from 'aws-amplify';
+import { getNote } from '../graphql/queries';
+import { updateNote } from '../graphql/mutations';
 export default function NoteUpdateForm(props) {
   const {
     id: idProp,
@@ -25,9 +25,9 @@ export default function NoteUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    name: "",
-    description: "",
-    image: "",
+    name: '',
+    description: '',
+    image: '',
   };
   const [name, setName] = React.useState(initialValues.name);
   const [description, setDescription] = React.useState(
@@ -50,7 +50,7 @@ export default function NoteUpdateForm(props) {
       const record = idProp
         ? (
             await API.graphql({
-              query: getNote.replaceAll("__typename", ""),
+              query: getNote.replaceAll('__typename', ''),
               variables: { id: idProp },
             })
           )?.data?.getNote
@@ -61,7 +61,7 @@ export default function NoteUpdateForm(props) {
   }, [idProp, noteModelProp]);
   React.useEffect(resetStateValues, [noteRecord]);
   const validations = {
-    name: [{ type: "Required" }],
+    name: [{ type: 'Required' }],
     description: [],
     image: [],
   };
@@ -79,16 +79,16 @@ export default function NoteUpdateForm(props) {
     if (customValidator) {
       validationResponse = await customValidator(value, validationResponse);
     }
-    setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
+    setErrors(errors => ({ ...errors, [fieldName]: validationResponse }));
     return validationResponse;
   };
   return (
     <Grid
-      as="form"
-      rowGap="15px"
-      columnGap="15px"
-      padding="20px"
-      onSubmit={async (event) => {
+      as='form'
+      rowGap='15px'
+      columnGap='15px'
+      padding='20px'
+      onSubmit={async event => {
         event.preventDefault();
         let modelFields = {
           name,
@@ -99,7 +99,7 @@ export default function NoteUpdateForm(props) {
           Object.keys(validations).reduce((promises, fieldName) => {
             if (Array.isArray(modelFields[fieldName])) {
               promises.push(
-                ...modelFields[fieldName].map((item) =>
+                ...modelFields[fieldName].map(item =>
                   runValidationTasks(fieldName, item)
                 )
               );
@@ -111,7 +111,7 @@ export default function NoteUpdateForm(props) {
             return promises;
           }, [])
         );
-        if (validationResponses.some((r) => r.hasError)) {
+        if (validationResponses.some(r => r.hasError)) {
           return;
         }
         if (onSubmit) {
@@ -119,12 +119,12 @@ export default function NoteUpdateForm(props) {
         }
         try {
           Object.entries(modelFields).forEach(([key, value]) => {
-            if (typeof value === "string" && value === "") {
+            if (typeof value === 'string' && value === '') {
               modelFields[key] = null;
             }
           });
           await API.graphql({
-            query: updateNote.replaceAll("__typename", ""),
+            query: updateNote.replaceAll('__typename', ''),
             variables: {
               input: {
                 id: noteRecord.id,
@@ -137,20 +137,20 @@ export default function NoteUpdateForm(props) {
           }
         } catch (err) {
           if (onError) {
-            const messages = err.errors.map((e) => e.message).join("\n");
+            const messages = err.errors.map(e => e.message).join('\n');
             onError(modelFields, messages);
           }
         }
       }}
-      {...getOverrideProps(overrides, "NoteUpdateForm")}
+      {...getOverrideProps(overrides, 'NoteUpdateForm')}
       {...rest}
     >
       <TextField
-        label="Name"
+        label='Name'
         isRequired={true}
         isReadOnly={false}
         value={name}
-        onChange={(e) => {
+        onChange={e => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
@@ -162,21 +162,21 @@ export default function NoteUpdateForm(props) {
             value = result?.name ?? value;
           }
           if (errors.name?.hasError) {
-            runValidationTasks("name", value);
+            runValidationTasks('name', value);
           }
           setName(value);
         }}
-        onBlur={() => runValidationTasks("name", name)}
+        onBlur={() => runValidationTasks('name', name)}
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
-        {...getOverrideProps(overrides, "name")}
+        {...getOverrideProps(overrides, 'name')}
       ></TextField>
       <TextField
-        label="Description"
+        label='Description'
         isRequired={false}
         isReadOnly={false}
         value={description}
-        onChange={(e) => {
+        onChange={e => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
@@ -188,21 +188,21 @@ export default function NoteUpdateForm(props) {
             value = result?.description ?? value;
           }
           if (errors.description?.hasError) {
-            runValidationTasks("description", value);
+            runValidationTasks('description', value);
           }
           setDescription(value);
         }}
-        onBlur={() => runValidationTasks("description", description)}
+        onBlur={() => runValidationTasks('description', description)}
         errorMessage={errors.description?.errorMessage}
         hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
+        {...getOverrideProps(overrides, 'description')}
       ></TextField>
       <TextField
-        label="Image"
+        label='Image'
         isRequired={false}
         isReadOnly={false}
         value={image}
-        onChange={(e) => {
+        onChange={e => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
@@ -214,42 +214,42 @@ export default function NoteUpdateForm(props) {
             value = result?.image ?? value;
           }
           if (errors.image?.hasError) {
-            runValidationTasks("image", value);
+            runValidationTasks('image', value);
           }
           setImage(value);
         }}
-        onBlur={() => runValidationTasks("image", image)}
+        onBlur={() => runValidationTasks('image', image)}
         errorMessage={errors.image?.errorMessage}
         hasError={errors.image?.hasError}
-        {...getOverrideProps(overrides, "image")}
+        {...getOverrideProps(overrides, 'image')}
       ></TextField>
       <Flex
-        justifyContent="space-between"
-        {...getOverrideProps(overrides, "CTAFlex")}
+        justifyContent='space-between'
+        {...getOverrideProps(overrides, 'CTAFlex')}
       >
         <Button
-          children="Reset"
-          type="reset"
-          onClick={(event) => {
+          children='Reset'
+          type='reset'
+          onClick={event => {
             event.preventDefault();
             resetStateValues();
           }}
           isDisabled={!(idProp || noteModelProp)}
-          {...getOverrideProps(overrides, "ResetButton")}
+          {...getOverrideProps(overrides, 'ResetButton')}
         ></Button>
         <Flex
-          gap="15px"
-          {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
+          gap='15px'
+          {...getOverrideProps(overrides, 'RightAlignCTASubFlex')}
         >
           <Button
-            children="Submit"
-            type="submit"
-            variation="primary"
+            children='Submit'
+            type='submit'
+            variation='primary'
             isDisabled={
               !(idProp || noteModelProp) ||
-              Object.values(errors).some((e) => e?.hasError)
+              Object.values(errors).some(e => e?.hasError)
             }
-            {...getOverrideProps(overrides, "SubmitButton")}
+            {...getOverrideProps(overrides, 'SubmitButton')}
           ></Button>
         </Flex>
       </Flex>

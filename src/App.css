@@ -22,7 +22,6 @@
   }
 }
 
-
 .App-header {
   background-color: white;
   min-height: 100vh;
@@ -45,6 +44,8 @@
   --amplify-components-heading-color: white;
   --amplify-components-button-color: white;
   --amplify-components-button-text-color: white;
+  --amplify-components-menu-background-color: white;
+  --amplify-components-menu-active-background-color: white;
 }
 
 .underline {
@@ -57,4 +58,3 @@
 .amplify-text {
   color: var(--amplify-components-text-color-primary);
 }
-

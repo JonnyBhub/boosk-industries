@@ -1,0 +1,84 @@
+{
+  "flashcards": [
+    {
+      "front": "Q: What is the capital of France?",
+      "back": "A: Paris"
+    },
+    {
+      "front": "Q: What is the largest planet in our solar system?",
+      "back": "A: Jupiter"
+    },
+    {
+      "front": "Q: Who painted the Mona Lisa?",
+      "back": "A: Leonardo da Vinci"
+    },
+    {
+      "front": "Q: What is the smallest country in the world?",
+      "back": "A: Vatican City"
+    },
+    {
+      "front": "Q: What is the highest mountain in the world?",
+      "back": "A: Mount Everest"
+    },
+    {
+      "front": "Q: Who wrote the novel 'To Kill a Mockingbird'?",
+      "back": "A: Harper Lee"
+    },
+    {
+      "front": "Q: What is the largest ocean in the world?",
+      "back": "A: Pacific Ocean"
+    },
+    {
+      "front": "Q: Who discovered penicillin?",
+      "back": "A: Alexander Fleming"
+    },
+    {
+      "front": "Q: What is the largest mammal in the world?",
+      "back": "A: Blue Whale"
+    },
+    {
+      "front": "Q: Who invented the telephone?",
+      "back": "A: Alexander Graham Bell"
+    },
+    {
+      "front": "Q: What is the currency of Japan?",
+      "back": "A: Japanese yen"
+    },
+    {
+      "front": "Q: Who wrote the play 'Hamlet'?",
+      "back": "A: William Shakespeare"
+    },
+    {
+      "front": "Q: What is the largest desert in the world?",
+      "back": "A: Sahara Desert"
+    },
+    {
+      "front": "Q: Who painted the ceiling of the Sistine Chapel?",
+      "back": "A: Michelangelo"
+    },
+    {
+      "front": "Q: What is the largest continent in the world?",
+      "back": "A: Asia"
+    },
+    {
+      "front": "Q: Who was the first person to walk on the moon?",
+      "back": "A: Neil Armstrong"
+    },
+    {
+      "front": "Q: What is the largest country in the world?",
+      "back": "A: Russia"
+    },
+    {
+      "front": "Q: Who wrote the novel '1984'?",
+      "back": "A: George Orwell"
+    },
+    {
+      "front": "Q: What is the currency of the United States?",
+      "back": "A: US Dollar"
+    },
+    {
+      "front": "Q: Who painted the 'The Starry Night'?",
+      "back": "A: Vincent van Gogh"
+    }
+  ]
+}
