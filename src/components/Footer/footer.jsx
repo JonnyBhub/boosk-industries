@@ -1,12 +1,13 @@
 import React from 'react';
 import { View } from '@aws-amplify/ui-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer style={{ opacity: '0.8' }}>
       <View>
         <p style={{ fontStyle: 'italic', textAlign: 'center' }}>
-          © 2021 Your Company Name. All rights reserved.
+          © 2023 Booskindustries. All rights reserved.
         </p>
       </View>
       <View>
@@ -19,13 +20,10 @@ const Footer = () => {
           }}
         >
           <li style={{ margin: '0 10px' }}>
-            <a href='#'>Contact us</a>
+            <a href='mailto:big@booskindustries.com'>Contact us</a>
           </li>
           <li style={{ margin: '0 10px' }}>
-            <a href='#'>The Legal Bit</a>
-          </li>
-          <li style={{ margin: '0 10px' }}>
-            <a href='#'></a>
+            <Link to='/the-legal-bit'>The Legal Bit</Link>
           </li>
         </ul>
       </View>

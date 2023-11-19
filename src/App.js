@@ -8,11 +8,12 @@ import { View, withAuthenticator } from '@aws-amplify/ui-react';
 import { Auth } from 'aws-amplify';
 
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import { TopBar } from './components/topBar';
-import ToggleDarkMode from './components/toggleDarkMode';
+import { TopBar } from './components/TopBar';
+import ToggleDarkMode from './components/DarkMode';
 import Notes from './pages/Notes';
 import CardPage from './pages/CardPage';
-import Footer from './components/footer';
+import Footer from './components/Footer';
+import Video from './pages/Video';
 
 const socialProviders = [
   {
@@ -81,10 +82,14 @@ const App = ({ signOut }) => {
         <div className='underline' style={{ marginTop: '1rem' }} />
         <br />
         <Routes>
-          <Route exact path='/Home' element={<Home />} />
+          <Route exact path='/' element={<Home />} />
           <Route path='/App' element={<MainApp />} />
           <Route path='/Notes' element={<Notes />} />
           <Route path='/Theory' element={<CardPage />} />
+          <Route path='/Cardano' element={<Cardano />} />
+         {
+         //<Route path='/Video' element={<Video />} />
+         }
         </Routes>
         <View
           width='6rem'

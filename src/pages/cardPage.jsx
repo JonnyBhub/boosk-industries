@@ -6,7 +6,7 @@ import {
   Button,
   SearchField,
 } from '@aws-amplify/ui-react';
-import FlashCard from '../components/flashCard';
+import FlashCard from '../components/FlashCard/flashCard';
 import flashcardData from '../JSON/flashcards.json';
 
 const refresh = () => {
@@ -16,6 +16,7 @@ const refresh = () => {
 const CardPage = () => {
   const [shuffledFlashcards, setShuffledFlashcards] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [focused, setFocused] = useState(false); 
   const [searchActive, setSearchActive] = useState(false);
 
   useEffect(() => {
@@ -54,27 +55,34 @@ const CardPage = () => {
     >
       <h1>Flashcards</h1>
       <br />
-      <View>
-        <SearchField
+      <Flex justifyContent='center' alignItems='center' width='100%' flexDirection='column' textAlign='center'>
+        <SearchField 
+          width='40%'
+          alignSelf='center'
           placeholder='Search flashcards'
           value={searchTerm}
           onChange={handleSearch}
           onKeyDown={handleKeyDown}
-          onFocus={() => setSearchActive(false)}
-          onBlur={() => setSearchActive(false)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
         />
-      </View>
+      </Flex>
       <br />
-      {searchActive ? (
-        <ul>
+      {focused ? ( searchActive ? (
+        <Flex justifyContent='center' alignItems='center' width='100%' flexDirection='column' textAlign='center'>
           {shuffledFlashcards.map(flashcard => (
-            <li key={flashcard.front}>
-              <FlashCard front={flashcard.front} back={flashcard.back} />
-            </li>
+            <FlashCard
+              front={flashcard.front}
+              back={flashcard.back}
+              key={flashcard.front}
+              style={{ margin: '0.5rem' }}
+            />
           ))}
-        </ul>
-      ) : (
-        <View display='flex' flexDirection='column' alignItems='center'>
+        </Flex>
+        ) : (
+          <View></View>
+      )) : (
+        <Flex justifyContent='center' alignItems='center' width='100%' flexDirection='column' textAlign='center'>
           {shuffledFlashcards.slice(0, 3).map(flashcard => (
             <FlashCard
               front={flashcard.front}
@@ -82,7 +90,7 @@ const CardPage = () => {
               key={flashcard.front}
             />
           ))}
-        </View>
+        </Flex>
       )}
       <br />
       <View alignItems='center'>

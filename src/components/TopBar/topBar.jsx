@@ -4,13 +4,9 @@ import {
   Button,
   Flex,
   Heading,
-  Image,
-  Text,
-  TextField,
-  View,
-  withAuthenticator,
+  Text
 } from '@aws-amplify/ui-react';
-import { MyMenu } from './menu';
+import  { MyMenu }  from '../Menu';
 
 export const TopBar = ({ signOut, user }) => (
   <Flex justifyContent='space-between' alignItems='center'>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
-import '../css/flashCard.css';
+import './flashCard.css';
 import { View } from '@aws-amplify/ui-react';
 
 const FlashCard = ({ front, back, isFront }) => {
