@@ -9,62 +9,15 @@ import { Auth } from 'aws-amplify';
 
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { TopBar } from './components/TopBar';
+
 import ToggleDarkMode from './components/DarkMode';
 import Notes from './pages/Notes';
 import CardPage from './pages/CardPage';
 import Footer from './components/Footer';
 import Video from './pages/Video';
+import Cardano from './pages/Cardano';
 
-const socialProviders = [
-  {
-    id: 'facebook',
-    label: 'Continue with Facebook',
-    sort: 1,
-    providerName: 'Facebook',
-    icon: 'https://facebook.com/favicon.ico',
-    active: true,
-    signUpConfig: {
-      hidden: true,
-      signUpFields: [{ key: 'name' }],
-    },
-  },
-  {
-    id: 'google',
-    label: 'Continue with Google',
-    sort: 2,
-    providerName: 'Google',
-    icon: 'https://accounts.google.com/favicon.ico',
-    active: true,
-    signUpConfig: {
-      hidden: true,
-      signUpFields: [{ key: 'name' }],
-    },
-  },
-  {
-    id: 'amazon',
-    label: 'Continue with Amazon',
-    sort: 3,
-    providerName: 'LoginWithAmazon',
-    icon: 'https://www.amazon.com/favicon.ico',
-    active: true,
-    signUpConfig: {
-      hidden: true,
-      signUpFields: [{ key: 'name' }],
-    },
-  },
-  {
-    id: 'apple',
-    label: 'Continue with Apple',
-    sort: 4,
-    providerName: 'SignInWithApple',
-    icon: 'https://apple.com/favicon.ico',
-    active: true,
-    signUpConfig: {
-      hidden: true,
-      signUpFields: [{ key: 'name' }],
-    },
-  },
-];
+
 
 const App = ({ signOut }) => {
   const [user, setUser] = useState(null);

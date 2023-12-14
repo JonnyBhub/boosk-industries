@@ -15,30 +15,36 @@ export const MyMenu = () => {
         },
       }}
     >
-      <View classname='menu' width='4rem' marginLeft={'2rem'}>
+      <View className='menu' width='4rem' marginLeft={'2rem'}>
         <Menu>
           <Link to='/'>
-            <MenuItem>
+            <MenuItem width={'10rem'}>
               <Icon icon='iconamoon:home-light' />
               &ensp;Home
             </MenuItem>
           </Link>
           <Link to='/App'>
-            <MenuItem>
+            <MenuItem width={'10rem'}>
               <Icon icon='ri:book-line' />
               &ensp;About
             </MenuItem>
           </Link>
           <Link to='/Notes'>
-            <MenuItem>
+            <MenuItem width={'10rem'}>
               <Icon icon='material-symbols:note-outline' />
               &ensp;Notes
             </MenuItem>
           </Link>
           <Link to='/Theory'>
-            <MenuItem>
+            <MenuItem width={'10rem'}>
               <Icon icon='mdi:brain' />
               &ensp;Theory
+            </MenuItem>
+          </Link>
+          <Link to='/Cardano'>
+            <MenuItem width={'10rem'}>
+              <Icon icon='simple-icons:cardano' />
+              &ensp;Cardano
             </MenuItem>
           </Link>
         </Menu>

@@ -9,7 +9,7 @@ const MainApp = () => {
   return (
     <View className='MainApp'>
       <Notes />
-      <Flex direction='row'>
+      <Flex direction='row' alignContent={"center"}>
         <FlashCard front='Front' back='Back' />
         <FlashCard front='Front' back='Back' />
         <FlashCard front='Help' back="I'm okay" />
